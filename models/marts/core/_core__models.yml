@@ -1,37 +1,81 @@
 models:
   - name: dim_customers
-    description: "Core information about our customers. Looker here to answer any customer questions you might have!"
+    description: "Core information about our customers. Look here to answer any customer questions you might have!"
     config:
-          materialized: table
+      materialized: table
 
-    columns:
-      - name: customer_id
-        data_type: int64
-        description: "Primary key for customers"
-        tests:
-          - unique
-          - not_null
+    latest_version: 2
+    versions:
+      - v: 1
+        columns:
+          - name: customer_id
+            data_type: int64
+            description: "Primary key for customers"
+            data_tests:
+              - unique
+              - not_null
 
-      - name: first_name
-        data_type: string
-        description: ""
+          - name: first_name
+            data_type: string
+            description: ""
 
-      - name: last_name
-        data_type: string
-        description: ""
+          - name: last_name
+            data_type: string
+            description: ""
 
-      - name: first_order_date
-        data_type: date
-        description: ""
+          - name: first_order_date
+            data_type: date
+            description: ""
 
-      - name: most_recent_order_date
-        data_type: date
-        description: ""
+          - name: most_recent_order_date
+            data_type: date
+            description: ""
 
-      - name: number_of_orders
-        data_type: int64
-        description: "Number of orders associated with given customer id"
+          - name: number_of_orders
+            data_type: int64
+            description: "Number of orders associated with given customer id"
 
-      - name: lifetime_value
-        data_type: float64
-        description: "Total amount of orders associated with given customer id"
+          - name: lifetime_value
+            data_type: float64
+            description: "Total amount of orders associated with given customer id"
+
+      - v: 2
+        config:
+          alias: dim_customers
+        columns:
+          - name: customer_id
+            data_type: int64
+            description: "Primary key for customers"
+            tests:
+              - unique
+              - not_null
+
+          - name: first_name
+            data_type: string
+            description: ""
+
+          - name: last_name
+            data_type: string
+            description: ""
+
+          - name: first_order_date
+            data_type: date
+            description: ""
+
+          - name: most_recent_order_date
+            data_type: date
+            description: ""
+
+          - name: number_of_orders
+            data_type: int64
+            description: "Number of orders associated with given customer id"
+
+          - name: lifetime_value
+            data_type: float64
+            description: "Total amount of orders associated with given customer id"
+
+          - name: average_order_value
+            data_type: float64
+            description: "Average amount of orders associated with given customer id"
+
+              
